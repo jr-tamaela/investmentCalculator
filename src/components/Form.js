@@ -1,4 +1,15 @@
+import { useState } from "react";
+
+const initialUserInput = {
+  "current-savings": 10000,
+  "yearly-contribution": 1200,
+  "expected-return": 8,
+  duration: 20,
+};
+
 const Form = () => {
+  const [userInput, setUserInput] = useState(initialUserInput);
+
   const submitHandler = (event) => {
     event.preventDefault(); // prevents browsers default behavior.
     // ... Do something upon submission.
@@ -6,13 +17,16 @@ const Form = () => {
   };
 
   const resetHandler = () => {
-    // .. do something when cancel is clicked.
-    console.log("RESET");
+    setUserInput(initialUserInput);
   };
 
   const inputChangeHandler = (input, value) => {
-    // .. do something when cancel is clicked.
-    console.log(input, value);
+    setUserInput((prevInput) => {
+      return {
+        ...prevInput,
+        [input]: value,
+      };
+    });
   };
 
   return (
@@ -24,6 +38,7 @@ const Form = () => {
             onChange={(event) =>
               inputChangeHandler("current-savings", event.target.value)
             }
+            value={userInput["current-savings"]}
             type="number"
             id="current-savings"
           />
@@ -34,6 +49,7 @@ const Form = () => {
             onChange={(event) =>
               inputChangeHandler("yearly-contribution", event.target.value)
             }
+            value={userInput["yearly-contribution"]}
             type="number"
             id="yearly-contribution"
           />
@@ -48,6 +64,7 @@ const Form = () => {
             onChange={(event) =>
               inputChangeHandler("expected-return", event.target.value)
             }
+            value={userInput["expected-return"]}
             type="number"
             id="expected-return"
           />
@@ -58,6 +75,7 @@ const Form = () => {
             onChange={(event) =>
               inputChangeHandler("duration", event.target.value)
             }
+            value={userInput["duration"]}
             type="number"
             id="duration"
           />
