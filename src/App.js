@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-import Header from "./components/Header";
-import Form from "./components/Form";
-import Table from "./components/Table";
+import Header from "./components/Header/Header";
+import Form from "./components/Form/Form";
+import Table from "./components/Table/Table";
 
 function App() {
   const [userInput, setUserInput] = useState(null);
@@ -35,7 +35,9 @@ function App() {
     <div>
       <Header />
       <Form onCalculate={calculateHandler} />
-      {!userInput && <p>No investment calculated yet.</p>}
+      {!userInput && (
+        <p style={{ textAlign: "center" }}>No investment calculated yet.</p>
+      )}
       {userInput && (
         <Table
           data={yearlyData}
