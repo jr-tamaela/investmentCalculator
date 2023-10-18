@@ -83,7 +83,7 @@ const Form = (props) => {
           />
         </p>
       </div>
-      <p className="actions">
+      <p className={classes.actions}>
         <button
           onClick={resetHandler}
           type="reset"
