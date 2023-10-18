@@ -13,7 +13,6 @@ const Form = (props) => {
 
   const submitHandler = (event) => {
     event.preventDefault(); // prevents browsers default behavior.
-    // ... Do something upon submission.
     props.onCalculate(userInput);
     console.log("SUBMIT");
   };
