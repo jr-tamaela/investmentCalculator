@@ -7,12 +7,13 @@ const initialUserInput = {
   duration: 20,
 };
 
-const Form = () => {
+const Form = (props) => {
   const [userInput, setUserInput] = useState(initialUserInput);
 
   const submitHandler = (event) => {
     event.preventDefault(); // prevents browsers default behavior.
     // ... Do something upon submission.
+    props.onCalculate(userInput);
     console.log("SUBMIT");
   };
 
